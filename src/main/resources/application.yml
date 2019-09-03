@@ -1,14 +1,21 @@
 server:
     port: 8080
+    servlet:
+        context-path: /cliente
 
 spring:
-    h2:
-      console:
-        enabled: true
+    jpa:
+        properties:
+            hibernate:
+                jdbc:
+                    lob:
+                        non_contextual_creation: true
     datasource:
-        platform: h2
-        url: 'jdbc:h2:file:../database/clientdb'
-        username: sa
-        password:
-        driver-class-name: org.h2.Driver  
-       
+        url: 'jdbc:postgresql://localhost:5432/clientedb'
+        username: clienteuser
+        password: clientepwd
+        driver-class-name: org.postgresql.Driver
+        
+swagger:
+    title: Cliente Service
+    description: Serviço de manipulação do cliente
