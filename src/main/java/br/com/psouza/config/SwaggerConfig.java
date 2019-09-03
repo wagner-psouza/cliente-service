@@ -1,10 +1,3 @@
-/*
- * Copyright UniSoma (www.unisoma.com.br).
- * Todos os direitos Reservados.
- * Propriedade confidencial não publicada da UniSoma.
- *
- * Criado em 2019.
-*/
 package br.com.psouza.config;
 
 import org.springframework.beans.factory.annotation.Value;
