@@ -1,0 +1,11 @@
+version: "3"
+services:
+  db:
+    image: postgres:latest
+    container_name: cliente-postgres
+    environment:
+      POSTGRES_DB: clientedb
+      POSTGRES_USER: clienteuser
+      POSTGRES_PASSWORD: clientepwd
+    ports:
+      - 5432:5432
