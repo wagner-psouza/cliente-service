@@ -8,11 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "endereco")
 public class Endereco implements BaseEntity {
 
     /**
@@ -41,6 +45,7 @@ public class Endereco implements BaseEntity {
     @Column(name = "complemento")
     private String complemento;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;

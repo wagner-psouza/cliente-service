@@ -12,10 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,6 +22,7 @@ import lombok.ToString;
 
 @Data
 @Entity
+@Table(name = "cliente")
 public class Cliente implements BaseEntity {
 
     /**
@@ -46,7 +46,7 @@ public class Cliente implements BaseEntity {
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
 
-    @JsonIgnore
+    // @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "cliente_id")
     @ToString.Exclude
