@@ -19,11 +19,14 @@ import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import lombok.experimental.Tolerate;
 
 @Data
+@Builder
 @Entity
 @Table(name = "cliente")
 public class Cliente implements BaseEntity {
@@ -56,5 +59,10 @@ public class Cliente implements BaseEntity {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<Endereco> enderecos;
+    
+    @Tolerate
+    public Cliente() {
+        super();
+    }
 
 }

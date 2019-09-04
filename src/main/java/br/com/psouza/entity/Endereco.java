@@ -13,9 +13,12 @@ import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Tolerate;
 
 @Data
+@Builder
 @Entity
 @Table(name = "endereco")
 public class Endereco implements BaseEntity {
@@ -53,4 +56,9 @@ public class Endereco implements BaseEntity {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
+    @Tolerate
+    public Endereco() {
+        super();
+    }
 }

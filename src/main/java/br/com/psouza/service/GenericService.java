@@ -50,9 +50,7 @@ public abstract class GenericService<T extends BaseEntity> {
             throw new ParameterInvalidException(
                     String.format("Obrigatório o objeto %s para alterar.", clazz.getName()));
 
-        if(!repository.findById(object.getId()).isPresent()) {
-            throw new ObjectNotFoundException(String.format("Nenhum objeto foi encontrado com id %s.", object.getId()));
-        }
+        findByIdOrElseThrow(object.getId());
 
         return this.repository.save(object);
     }
@@ -65,9 +63,8 @@ public abstract class GenericService<T extends BaseEntity> {
     public void delete(Long id) {
         if (id == null)
             throw new ParameterInvalidException("Para deletar é obrigatório o ID.");
-        
-        T object = repository.findById(id).orElseThrow(
-                () -> new ObjectNotFoundException(String.format("Nenhum objeto foi encontrado com id %s.", id)));
+
+        T object = findByIdOrElseThrow(id);
 
         this.repository.delete(object);
     }
@@ -81,9 +78,8 @@ public abstract class GenericService<T extends BaseEntity> {
     public T findById(Long id) {
         if (id == null)
             throw new ParameterInvalidException("Para buscar é obrigatório o ID.");
-
-        return repository.findById(id).orElseThrow(
-                () -> new ObjectNotFoundException(String.format("Nenhum objeto foi encontrado com id %s.", id)));
+        
+        return findByIdOrElseThrow(id);
     }
 
     /**
@@ -94,6 +90,11 @@ public abstract class GenericService<T extends BaseEntity> {
      */
     public List<T> findAll() {
         return this.repository.findAll();
+    }
+
+    protected T findByIdOrElseThrow(Long id) {
+        return repository.findById(id).orElseThrow(
+                () -> new ObjectNotFoundException(String.format("Nenhum objeto foi encontrado com id %s.", id)));
     }
 
 }
