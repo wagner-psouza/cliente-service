@@ -7,6 +7,9 @@ import org.springframework.util.ObjectUtils;
 import br.com.psouza.entity.Cliente;
 import br.com.psouza.repository.ClienteRepository;
 
+/**
+ * Serviço da entidade Cliente com as operações de CRUD.
+ */
 @Service
 public class ClienteService extends GenericService<Cliente> {
 

@@ -21,6 +21,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -51,11 +52,13 @@ public class Cliente implements BaseEntity {
     @NotBlank
     @CPF
     @Column(name = "cpf", nullable = false, unique = true)
+    
     private String cpf;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_nascimento", nullable = false)
     @Temporal(TemporalType.DATE)
+    @ApiModelProperty(example = "10/01/2019", notes = "O formato da data deve ser dd/MM/yyyy")
     private Date dataNascimento;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "cliente", orphanRemoval = true)
