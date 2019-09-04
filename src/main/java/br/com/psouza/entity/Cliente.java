@@ -17,6 +17,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Builder;
@@ -47,6 +49,7 @@ public class Cliente implements BaseEntity {
     private String nome;
 
     @NotBlank
+    @CPF
     @Column(name = "cpf", nullable = false, unique = true)
     private String cpf;
 

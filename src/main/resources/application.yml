@@ -28,3 +28,4 @@ spring:
 swagger:
     title: Cliente Service
     description: Serviço de manipulação do cliente
+    pathSelector: /api/**
