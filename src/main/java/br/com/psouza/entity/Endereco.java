@@ -8,11 +8,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Tolerate;
 
 @Data
+@Builder
 @Entity
+@Table(name = "endereco")
 public class Endereco implements BaseEntity {
 
     /**
@@ -26,12 +34,15 @@ public class Endereco implements BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "endereco_seq")
     private Long id;
 
+    @NotBlank
     @Column(name = "rua", nullable = false)
     private String rua;
 
+    @NotBlank
     @Column(name = "cidade", nullable = false)
     private String cidade;
 
+    @NotBlank
     @Column(name = "uf", nullable = false)
     private String uf;
 
@@ -41,7 +52,13 @@ public class Endereco implements BaseEntity {
     @Column(name = "complemento")
     private String complemento;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
+    @Tolerate
+    public Endereco() {
+        super();
+    }
 }

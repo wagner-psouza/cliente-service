@@ -11,6 +11,8 @@ spring:
         database-platform: org.hibernate.dialect.PostgreSQLDialect
         hibernate:
             ddl-auto: none
+        show-sql: true
+        open-in-view: true
         properties:
             hibernate:
                 jdbc:
@@ -26,3 +28,4 @@ spring:
 swagger:
     title: Cliente Service
     description: Serviço de manipulação do cliente
+    pathSelector: /api/**

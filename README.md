@@ -12,8 +12,30 @@ Foi criado um docker-compose para facilitar a criação dos serviços necessári
 
 Antes de iniciar o desenvolvimento executar o comando abaixo na raiz do projeto.
 
-`
+```bash
 docker-compose up -d
-`
+```
 
+## Compilar a aplicação
+
+Para gerar a versão é necessário executar o comando abaixo na raiz do projeto.
+
+```bash
+mvn clean install
+```
+
+## Subir aplicação
+
+Para subir a aplicação o comando abaixo deve ser executado na raiz do projeto.
+
+```bash
+java -jar target/cliente-service.jar
+```
+## Swagger
+
+Como alternativa de documentação dos endpoints foi utilizado o Swagger, que pode ser acessado pelo link abaixo.
+
+```
+http://localhost:8080/cliente/swagger-ui.html
+```
 
