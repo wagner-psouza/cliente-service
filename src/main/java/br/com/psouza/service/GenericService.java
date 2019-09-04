@@ -3,7 +3,6 @@ package br.com.psouza.service;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -51,8 +50,9 @@ public abstract class GenericService<T extends BaseEntity> {
             throw new ParameterInvalidException(
                     String.format("Obrigatório o objeto %s para alterar.", clazz.getName()));
 
-        if (!this.repository.existsById(object.getId()))
+        if(!repository.findById(object.getId()).isPresent()) {
             throw new ObjectNotFoundException(String.format("Nenhum objeto foi encontrado com id %s.", object.getId()));
+        }
 
         return this.repository.save(object);
     }
@@ -65,8 +65,11 @@ public abstract class GenericService<T extends BaseEntity> {
     public void delete(Long id) {
         if (id == null)
             throw new ParameterInvalidException("Para deletar é obrigatório o ID.");
+        
+        T object = repository.findById(id).orElseThrow(
+                () -> new ObjectNotFoundException(String.format("Nenhum objeto foi encontrado com id %s.", id)));
 
-        this.repository.delete(findById(id));
+        this.repository.delete(object);
     }
 
     /**
@@ -79,12 +82,8 @@ public abstract class GenericService<T extends BaseEntity> {
         if (id == null)
             throw new ParameterInvalidException("Para buscar é obrigatório o ID.");
 
-        Optional<T> object = this.repository.findById(id);
-
-        if (!object.isPresent())
-            throw new ObjectNotFoundException(String.format("Nenhum objeto foi encontrado com id %s.", id));
-
-        return object.get();
+        return repository.findById(id).orElseThrow(
+                () -> new ObjectNotFoundException(String.format("Nenhum objeto foi encontrado com id %s.", id)));
     }
 
     /**

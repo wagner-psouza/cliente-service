@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -30,12 +31,15 @@ public class Endereco implements BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "endereco_seq")
     private Long id;
 
+    @NotBlank
     @Column(name = "rua", nullable = false)
     private String rua;
 
+    @NotBlank
     @Column(name = "cidade", nullable = false)
     private String cidade;
 
+    @NotBlank
     @Column(name = "uf", nullable = false)
     private String uf;
 

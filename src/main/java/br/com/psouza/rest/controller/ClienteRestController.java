@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.psouza.entity.Cliente;
 import br.com.psouza.service.ClienteService;
+import br.com.psouza.to.ClienteTO;
 
 @RestController
 @RequestMapping("/api/v1/cliente")
@@ -42,7 +43,7 @@ public class ClienteRestController {
     
     @PutMapping
     public ResponseEntity<Cliente> update(@Valid @RequestBody Cliente cliente) {
-        return ResponseEntity.ok(clienteService.save(cliente));
+        return ResponseEntity.ok(clienteService.update(cliente));
     }
 
     @GetMapping("/{id}")
