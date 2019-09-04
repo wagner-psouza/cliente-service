@@ -39,3 +39,12 @@ Como alternativa de documentação dos endpoints foi utilizado o Swagger, que po
 http://localhost:8080/cliente/swagger-ui.html
 ```
 
+### Tecnologias e Ferramentas Utilizadas
+
+* Java 8
+* Maven
+* Docker
+* Liquibase - Para versionamento do banco de dados
+* Swagger  - Para testes e documentação dos Endpoint
+* Mockito - Para testes de unidade
+
