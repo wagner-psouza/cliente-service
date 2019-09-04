@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.psouza.entity.Cliente;
 import br.com.psouza.service.ClienteService;
-import br.com.psouza.to.ClienteTO;
 
 @RestController
 @RequestMapping("/api/v1/cliente")
