@@ -24,7 +24,7 @@
         <liquibase-maven-plugin.version>3.5.5</liquibase-maven-plugin.version>
         <liquibase-hibernate5.version>3.6</liquibase-hibernate5.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
-		<swagger.version>2.9.2</swagger.version>
+		<swagger.version>2.10.0</swagger.version>
 		<maven.build.timestamp.format>yyyyMMdd'T'HHmmss</maven.build.timestamp.format>
 		<powermockito.version>1.7.3</powermockito.version>
 	</properties>
